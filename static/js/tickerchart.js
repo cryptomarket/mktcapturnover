@@ -15,15 +15,13 @@ $(function() {
 
 function handleGetJSONResponseTickerAPI(data) {
     var traceData, mkt_cap_threshold, day_vol_threshold;
-    mkt_cap_threshold = Math.pow(10, 6);  // Only want mkt cap >= $1M
     day_vol_threshold = 5000;  // Only want trading vol >= $5K
     traceData = {
         'type': 'scatter', 'mode': 'markers', 'hoverinfo': 'text',
         'x': [], 'y': [], 'text': [], 'marker': {'size': []}
     };
     $.each(data, function (index, value) {
-        if (value['market_cap_usd'] >= mkt_cap_threshold && 
-            value['24h_volume_usd'] >= day_vol_threshold) {        
+        if (value['24h_volume_usd'] >= day_vol_threshold) {
             traceData['x'].push(value['market_cap_usd']);
             traceData['y'].push((value['24h_volume_usd'] / value['market_cap_usd']) * 100);
             traceData['text'].push(value['name']);
