@@ -14,7 +14,7 @@ $(function() {
 });
 
 function handleGetJSONResponseTickerAPI(data) {
-    var traceData, mkt_cap_threshold, day_vol_threshold;
+    var traceData, day_vol_threshold;
     day_vol_threshold = 5000;  // Only want trading vol >= $5K
     traceData = {
         'type': 'scatter', 'mode': 'markers', 'hoverinfo': 'text',
