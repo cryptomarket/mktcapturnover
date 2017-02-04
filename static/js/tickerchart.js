@@ -25,7 +25,7 @@ function handleGetJSONResponseTickerAPI(data) {
             traceData['x'].push((value['24h_volume_usd'] / value['market_cap_usd']) * 100);
             traceData['y'].push(value['market_cap_usd']);
             traceData['text'].push(value['name']);
-            traceData['marker']['size'].push(Math.log(value['24h_volume_usd'] / 10)); // Why / 10? To better show relative size.
+            traceData['marker']['size'].push(Math.log(value['24h_volume_usd']));
         };
     });
     $('.se-pre-load').hide();
