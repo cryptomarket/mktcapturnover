@@ -22,8 +22,8 @@ function handleGetJSONResponseTickerAPI(data) {
     };
     $.each(data, function (index, value) {
         if (value['24h_volume_usd'] >= day_vol_threshold) {
-            traceData['x'].push(value['market_cap_usd']);
-            traceData['y'].push((value['24h_volume_usd'] / value['market_cap_usd']) * 100);
+            traceData['x'].push((value['24h_volume_usd'] / value['market_cap_usd']) * 100);
+            traceData['y'].push(value['market_cap_usd']);
             traceData['text'].push(value['name']);
             traceData['marker']['size'].push(Math.log(value['24h_volume_usd'] / 10)); // Why / 10? To better show relative size.
         };
@@ -39,14 +39,14 @@ function initiateChart(data) {
     layout = {
         title: 'Cryptocurrency Daily Turnover Rate (@ Exchanges)',
         xaxis: {
-            'title': 'Market Cap',
-            'type': 'log'
-        },
-        yaxis: {
             'title': '24H Turnover Ratio',
             'type': 'log',
             'ticksuffix': '%',
             'dtick': 0.5
+        },
+        yaxis: {
+            'title': 'Market Cap',
+            'type': 'log'
         },
         hovermode: 'closest'
     };
