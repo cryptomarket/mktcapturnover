@@ -1,5 +1,3 @@
-var CORSURLPrefix;
-
 $(window).load(function() {
     if ($('.se-pre-load').is(':visible')) {
         $('.panel').hide();
@@ -7,7 +5,7 @@ $(window).load(function() {
 });
 
 $(function() {
-    var url;
+    var CORSURLPrefix, url;
     CORSURLPrefix = 'https://cors-anywhere.herokuapp.com/';
     url = 'https://api.coinmarketcap.com/v1/ticker?limit=100';
     $.getJSON(CORSURLPrefix + url, handleGetJSONResponseTickerAPI);
