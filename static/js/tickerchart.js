@@ -12,11 +12,12 @@ $(function() {
 });
 
 function handleGetJSONResponseTickerAPI(data) {
-    var traceData, day_vol_threshold;
+    var traceData, day_vol_threshold, colors;
+    colors = ['rgb(204, 0, 0)', 'rgb(38, 77, 0)', 'rgb(38, 77, 0)']
     day_vol_threshold = 5000;  // Only want trading vol >= $5K
     traceData = {
         'type': 'scatter', 'mode': 'markers', 'hoverinfo': 'text',
-        'x': [], 'y': [], 'text': [], 'marker': {'size': []}
+        'x': [], 'y': [], 'text': [], 'marker': {'size': [], 'color': []}
     };
     $.each(data, function (index, value) {
         if (value['24h_volume_usd'] >= day_vol_threshold) {
@@ -24,6 +25,7 @@ function handleGetJSONResponseTickerAPI(data) {
             traceData['y'].push(value['market_cap_usd']);
             traceData['text'].push(value['name']);
             traceData['marker']['size'].push(Math.log(value['24h_volume_usd']));
+            traceData['marker']['color'].push(colors[Math.sign(value['percent_change_24h']) + 1]);
         };
     });
     $('.se-pre-load').hide();
