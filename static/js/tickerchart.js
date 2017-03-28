@@ -30,7 +30,7 @@ function handleGetJSONResponseTickerAPI(data) {
             traceData['marker']['color'].push(colors[Math.sign(value['percent_change_24h']) + 1]);
         }
         if (value['id'] === 'bitcoin') {
-            report_datetime = new Date(parseInt(value['last_updated']));
+            report_datetime = new Date(parseInt(value['last_updated']) * 1000);
         }
     });
     $('.se-pre-load').hide();
