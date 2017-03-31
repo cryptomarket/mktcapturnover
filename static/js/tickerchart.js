@@ -24,7 +24,7 @@ function handleGetJSONResponseTickerAPI(data) {
             traceData['x'].push((value['24h_volume_usd'] / value['market_cap_usd']) * 100);
             traceData['y'].push(value['market_cap_usd']);
             traceData['text'].push(
-                value['name'] + '<br />24 Hour: ' + value['percent_change_24h'] +
+                value['name'] + ' (' + value['symbol'] + ')<br />24 Hour: ' + value['percent_change_24h'] +
                 '%<br />7 Day: ' + value['percent_change_7d'] + '%');
             traceData['marker']['size'].push(Math.log(value['24h_volume_usd']));
             traceData['marker']['color'].push(colors[Math.sign(value['percent_change_24h']) + 1]);
